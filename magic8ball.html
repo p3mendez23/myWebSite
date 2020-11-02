@@ -3,7 +3,7 @@
 <script languague = "JavaScript">
     
     
-    var answers = ["yes", "No", "Maybe", "Very Doubtful", "Depends on who wins election", "Of Course", "Never", "the future is cloudy", "Without a doubt", "Nah"];
+    var answers = ["yes", "No", "Maybe", "Probably Not", "Depends If Your Lucky", "Of Course", "Most Likely", "You Have Great Things In Store", "Without a doubt", "Nah"];
 
     
     
@@ -32,14 +32,14 @@ function random()
     myAnswer.value = answers[rand];
         if( rand == 9 )
         {   
-         document.getElementById("player").play();
+         document.getElementById("yes").play();
         }
     }
 }
 
 function reset()
 {    
-    document.getElementById("answer").value = ""
+    document.getElementById("player").value = ""
     //alert("hello");
 }    
     
@@ -57,7 +57,7 @@ function reset()
     <input type="button" value="Click Here"                    onClick="random()"/><br/><br/>
     <input id="answer" type= "text" size="80" readonly=        "true"/><br/>
     
-    <audio id="player" src="sounds/_____.mp3"> </audio>
+    <audio src="sounds/sound.mp3" id="player"> </audio>
     <br/>
     Click Here To <a href="index.html"> Return To My           Homepage</a>
     
