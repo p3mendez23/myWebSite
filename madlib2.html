@@ -1,0 +1,86 @@
+<html>
+<head> 
+<script language="JavaScript">
+
+var partsOfSpeech = ["Please enter a color", "Please enter an adjective", "Please enter a word that involves exercise", "Please enter a synonym for thrown", "Please enter a resturant", "Please enter a number", "Please enter an adjective", "Please enter an adjective"];
+var answers = new Array(partsOfSpeech.length);
+var story = ["You are headed to lunch in a ", " car. When you exit your neighborhood, you see a ", ", man. He starts running at your car and jumps on your windshield and starts ", ", . You quickly turn on the windshield wipers causing him to get ", " off your car. After that weird experience you are back on your way and headed to ", ". Once you arrive you go inside and there is 1 person working. Immediately in your head you begin to think about how long it is going to take. After ", "  minutes of waiting it is finally your turn to order food. After you’re done ordering you wait a few minutes for your ", " food. Once you get your food it looks", " and you immediately want a refund. You get a refund and head home filled with anger. WHen you get home you make a PB&J, sit on the couch, and fall asleep." ];
+var count = 0;
+
+function prompt()
+{
+	// if this is the start, display the textbox and hide the story. 
+	// then display the first element of partsOfSpeech in the textbox. 
+
+	document.getElementById("userEnter").style.visibility = "visible";
+	document.getElementById("story").style.visibility = "hidden";
+	document.getElementById("response").value = partsOfSpeech[count];
+}
+
+
+function getWords()
+{
+	var wordBox = document.getElementById("response")
+	answers[count] = wordBox.value;
+	
+	count++;
+
+	if(count < partsOfSpeech.length) // there's another prompt coming
+	{
+		prompt();
+	}
+	else // done entering words. Time to display story
+	{
+		count = 0;
+		document.getElementById("story").innerHTML = displayStory();
+	}
+}
+
+
+function displayStory()
+{
+	var answer = "";
+	var i;
+	
+	// loop to stitch elements of story with elements of answers. 
+	
+	for (i = 0; i < answers.length; i++)
+	{
+	answer = answer + story[i]
+	answer = answer + answers[i]
+	}
+	answer = answer + story[i];
+
+
+	// if there's one more element in story than answers, then add the last element of answers
+
+	// Make the story div visible, and the userEnter div hidden.
+
+	document.getElementById("story").style.visibility = "visible";
+	document.getElementById("userEnter").style.visibility = "hidden";		
+
+	// return the variable answer.
+
+	return answer;
+}
+
+</script>
+</head>
+<body		background = "images/brick.jpg">
+	
+<center> 
+<h1>My MadLib!</h1>
+Click <a href="index.html">here</a> return to my homepage.
+</br></br>
+<input id="daButton" type="button" value="start" onClick="prompt()"/>
+</center>
+<div id="userEnter" style="position:absolute; left:200; top: 100; visibility:hidden;">
+<input type = "text" id="response" value="" onfocusout="getWords()"/>
+</div>
+
+<div id="story" style="position:absolute; overflow:scroll; top:300; left:200; width:400; height: 200; visibility:hidden">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+<div>
+
+</body>
+</html>
