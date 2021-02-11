@@ -1,0 +1,99 @@
+
+<html> 
+<head> 
+<script language="JavaScript">
+
+/*************** Algorithm ******************
+1.created q's and a's as variables
+2.made the functions
+3.made display loop to loops through all the questions
+4.user does the quiz and sees his results
+5. the update score will make sure he got the answer rights
+6.after the right answer is shown the user will know if he is right or not
+7.the algorithm will restart 
+
+*/
+
+
+var questions = ["What color is the best", "How many states are there", "What is the most wacthed sport", "What school are we going to", "What is the fastest car", "What brand does our schools sports team wear", "What is the best food", "Who is the fastest person" ,"What animal is the best"];
+
+
+var answers = ["Pink", "50", "Soccer", "Carmel High School", "Bugatti Veyron", "Adidas", "Pasta", "Usain Bolt", "Monkey"];
+
+var index = 0;
+
+var score = 0
+
+
+// Create code in displayQuestion that will display the contents of the questions array, one 
+// element at a time. After the last element is displayed, the program should display the first
+// element again.
+function displayQuestion()
+{
+document.getElementById("question").value = questions[index]
+    
+    if(index ==9)
+    {
+        index =0
+document.getElementById("answer").value= ""
+document.getElementById("question").value="score is" + score + "outof 9"
+    }
+
+
+}
+
+function updateScore()
+{
+	var wordBox = document.getElementById("answer");
+   if(wordBox.value == answers[index])
+   {
+       document.getElementById("question").value="correct"
+    document.getElementById("answer").value =""
+    
+    
+    index++
+    score++
+   }
+    else
+    {
+        document.getElementById("question").value="incorrect"
+     document.getElementById("answer").value =""
+     index++
+    }
+}
+
+// This function takes a parameter which will be the users answer. If what the user has submitted the correct answer, this method should return true. Otherwise it should return false. 
+function checkAnswer(ans)
+{
+
+}
+
+
+
+</script>
+</head>
+<body > 
+    
+<center>
+<h1> Quiz</h1>
+
+
+<br/><br/>
+<table border = 3>
+	<tr>
+		<td>  	<input id="question" type="text" size="70" readonly = true/>	</td>
+	</tr>
+	<tr height = "12"><td></td>
+	</tr>
+	<tr>
+		<td>	<input id="answer" type="text" size="70" onfocusout="updateScore()"/> </td>
+	</tr>
+</table>
+<br/><br/>
+<input type="button" value="Next Question" onclick="displayQuestion()"/>
+</center>
+Click <a href="index.html">here</a> return to my homepage.
+
+</body>
+</html>
+
